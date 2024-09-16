@@ -1,20 +1,13 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   def show
-    @user = User.find(params[:id])
   end
   
   def edit
   end
   
-  def update
-    if @user.update(user_params)
-      redirect_to @user, notice: 'ユーザー情報が更新されました。'
-    else
-      render :edit
-    end
-  end
-
   private
 
   def set_user

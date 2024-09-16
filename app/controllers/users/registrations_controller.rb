@@ -1,25 +1,17 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  
-  def edit
-    super
-  end
-  
-  protected
-  
-  def after_update_path_for(resource)
-    user_path(resource)
-  end
-
-  def update_resource(resource, params)
-    if params[:password].present?
-      super
+    
+  def update
+    if current_user.update_without_current_password(user_params)
+      redirect_to user_path(current_user), notice: '更新が完了しました。'
     else
-      resource.update_without_password(params.except("current_password"))
+      render :edit
     end
   end
-  
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email)
   end
-  
+
 end
