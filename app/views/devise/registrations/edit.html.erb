@@ -13,19 +13,26 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <div class="field">
-    <%= f.label :name, '名前' %><br />
+    <%= f.label :name, '名前' %></br>
     <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email, 'メールアドレス' %><br />
+    <%= f.label :email, 'メールアドレス' %></br>
     <%= f.email_field :email %>
   </div>
 
   <div class="field">
-    <%= f.label :password, '新しいパスワード' %>（必要な場合のみ）<br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :current_password, "現在のパスワード（パスワードを変更する場合のみ）" %></br>
+    <%= f.password_field :current_password, autocomplete: "current-password" %></br>
+
+    <%= f.label :password, '新しいパスワード（変更する場合のみ）' %></br>
+    <%= f.password_field :password, autocomplete: "new-password" %></br>
+    
+    <%= f.label :password_confirmation, "新しいパスワード確認" %></br>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %></br>
   </div>
+  
 
   <div class="actions">
     <%= f.submit "更新", class: 'btn btn-primary' %>
