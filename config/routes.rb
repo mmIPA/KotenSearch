@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {  registrations: 'users/registrations'}
-  resources :users, only: [:show, :edit]
+  get '/mypage', to: 'users#show', as: 'mypage'
+  resources :users, only: [:edit]
   
   get 'posts/new'
   get 'posts/index'
