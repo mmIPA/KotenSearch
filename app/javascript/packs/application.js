@@ -19,3 +19,4 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+import '../stylesheets/mystyle.css';

@@ -13,21 +13,30 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
-      <li>
-        <%= link_to 'マイページ', user_path(current_user) %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-      <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+      <nav class="navbar">
+        <div class="navbar-left">
+          <%= link_to "個展サーチ", "/", class: "navbar-brand" %>
+        </div>
+          <div class="navbar-right">
+            <ul class="nav-list">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'マイページ', user_path(current_user) %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_user_registration_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_user_session_path %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+       </nav>
     </header>
 
     <% if flash[:notice] %>
@@ -39,7 +48,8 @@
         <%= flash[:alert] %>
       </div>
     <% end %>
-    
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;  /* 左右の要素を分ける */
+  align-items: center;
+  padding: 10px 20px;  /* ヘッダーの上下左右に余白を設定 */
+  background-color: #f8f9fa;  /* 必要に応じて背景色を設定 */
+}
+
+.navbar-left {
+  font-size: 24px;
+}
+
+.navbar-right {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  padding: 20px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;    
+  padding: 20px;     
+}
