@@ -1,14 +1,17 @@
 <div class="container">
   <div class="header">
-    <div class="row"> 
+    <div class="row d-flex justify-content-center align-items-center" style="height: 100px;"> 
       <div class="header-logo">個展サーチ</div>
     </div>
-    <div class="row">
+    <div class="row d-flex justify-content-center align-items-center" style="height: 100px;">
       <h1>個展を開くクリエイターとアート好きを繋ぐサイトです。</h1>
     </div>
-    <div class="row">
+    <div class="row" style="height: 100px;">
       <div class="col-lg-6">クリエイターは新規登録することで個展開催情報を公開することができます。</div>
       <div class="col-lg-6">アート好きは個展情報を場所や開催場所で検索することができます。</div>
     </div>
+  </div>
+  <div class="row" style="padding-top: 100px;"> 
+    <%= render partial: 'posts/post_list', locals: { posts: @posts } %>
   </div>
 </div>

@@ -1,0 +1,22 @@
+<div class="row">
+  <% if posts.any? %>
+    <% posts.each do |post| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <% if post.image.present? %>
+            <%= image_tag post.image.url, class: 'card-img-top', alt: post.title %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text"><%= truncate(post.description, length: 100) %></p>
+            <p><strong>場所:</strong> <%= post.place %></p>
+            <p><strong>期間:</strong> <%= post.start_date %> 〜 <%= post.end_date %></p>
+            <%= link_to '詳細を確認', post_path(post), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>現在、投稿はありません。</p>
+  <% end %>
+</div>
