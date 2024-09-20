@@ -11,6 +11,6 @@
     <%= link_to '退会する', user_registration_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-primary' %>
   </div>
   <div class="row" style="padding: 10px;">
-    <button type="button" class="btn btn-outline-primary"><%= link_to '新規投稿', "posts/new" %></button>
+    <button type="button" class="btn btn-outline-primary"><%= link_to '新規投稿', new_post_path %></button>
   </div>
 </div>
