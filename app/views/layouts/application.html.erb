@@ -19,6 +19,9 @@
         </div>
           <div class="navbar-right">
             <ul class="nav-list">
+              <li class="nav-item">
+               <%= link_to '投稿一覧', posts_path %>
+              </li>
               <% if user_signed_in? %>
                 <li class="nav-item">
                   <%= link_to 'マイページ', "/mypage" %>
