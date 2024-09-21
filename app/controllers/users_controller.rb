@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
 
   def show
+    @user = current_user
+    @posts = @user.posts
   end
   
   def edit

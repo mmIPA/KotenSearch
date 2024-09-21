@@ -24,6 +24,15 @@ class PostsController < ApplicationController
   def edit
   end
   
+  def destroy
+    if @post.user == current_user
+      @post.destroy
+      redirect_to mypage_path, notice: '投稿を削除しました。'
+    else
+      redirect_to posts_path, alert: '投稿を削除する権限がありません。'
+    end  
+  end
+  
   private
 
   def post_params
