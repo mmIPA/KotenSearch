@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/mypage', to: 'users#show', as: 'mypage'
   resources :users, only: [:edit]
   resources :posts, only: [:new, :create, :show, :index]
-  get "/" => "homes#top"
+  root "homes#top"
 end
