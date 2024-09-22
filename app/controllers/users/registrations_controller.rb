@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     
   def update
     if current_user.update_without_current_password(user_params)
-      redirect_to user_path(current_user), notice: '更新が完了しました。'
+      redirect_to mypage_path, notice: '更新が完了しました。'
     else
       render :edit
     end

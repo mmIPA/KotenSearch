@@ -22,9 +22,20 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to @post, notice: '投稿が更新されました。'
+    else
+      render :edit
+    end 
   end
   
   def destroy
+    @post = Post.find(params[:id]) 
     if @post.user == current_user
       @post.destroy
       redirect_to mypage_path, notice: '投稿を削除しました。'
@@ -39,4 +50,10 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :description, :start_date, :end_date, :start_time, :end_time, :place, :image)
   end
   
+  def set_post
+    @post = Post.find_by(id: params[:id])
+    unless @post
+      redirect_to posts_path, alert: '指定された投稿は見つかりませんでした。'
+    end
+  end
 end
