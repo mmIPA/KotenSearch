@@ -11,53 +11,69 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_field :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_field :end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.time_field :start_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.time_field :end_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :place %>
-    <%= form.text_field :place %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
   
-  <div class="form-group">
-    <%= form.label :category_id, "カテゴリ" %>
-    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, class: "form-control" %>
+  <div class = "container mt-4 mb-4">
+  <div class="form-group row">
+    <%= form.label :image, "イメージ", class: "col-md-2 col-form-label" %>
+    <div class="col-md-8">
+      <%= form.file_field :image %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit "投稿する" %>
+  <div class="form-group row">
+    <%= form.label :title, "タイトル", class: "col-md-2 col-form-label" %>
+    <div class="col-md-8">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :description, "概要", class: "col-md-2 col-form-label" %>
+    <div class="col-md-8">
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :start_date, "会期", class: "col-md-2 col-form-label" %>
+    <div class="col-md-3">
+      <%= form.date_field :start_date, class: "form-control" %>
+    </div>
+    <div class="col-md-1 text-center">～</div>
+    <div class="col-md-3">
+      <%= form.date_field :end_date, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :start_time, "時間", class: "col-md-2 col-form-label" %>
+    <div class="col-md-3">
+      <%= form.time_select :start_time, class: "form-control" %>
+    </div>
+    <div class="col-md-1 text-center">～</div>
+    <div class="col-md-3">
+      <%= form.time_select :end_time, class: "form-control" %>
+    </div>
+  </div>
+
+    <div class="form-group row">
+      <%= form.label :place, "場所", class: "col-md-2 col-form-label" %>
+      <div class="col-md-8">
+        <%= form.text_field :place, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= form.label :category_id, "カテゴリ", class: "col-md-2 col-form-label" %>
+      <div class="col-md-8">
+        <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-10 offset-md-2">
+        <%= form.submit "投稿する", class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 <% end %>
