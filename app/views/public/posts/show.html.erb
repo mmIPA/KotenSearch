@@ -15,7 +15,9 @@
   </div>
 
   <div class="row mt-4">
-    <%= @post.categories.map(&:name).join(", ") %>
+    <% @post.categories.each do |category| %>
+      <span><%= category.name %></span>
+    <% end %>
   </div>
   
   <!-- 投稿詳細 -->

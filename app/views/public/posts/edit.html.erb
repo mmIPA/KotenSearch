@@ -1,59 +1,79 @@
 <h2>投稿の編集</h2>
+<%= form_with model: @post, local: true, html: { multipart: true } do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> が発生しました:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@post.errors.count, "error") %> が発生しました:</h2>
-    <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <div class="container mt-4 mb-4">
+    <div class="form-group row">
+      <%= form.label :image, "イメージ", class: "col-md-2 col-form-label" %>
+      <div class="col-md-8">
+        <%= form.file_field :image %>
+      </div>
+    </div>
 
-<%= form_for @post do |f| %>
-  <div class="field">
-    <%= f.label :title, 'タイトル' %>
-    <%= f.text_field :title %>
-  </div>
+    <div class="form-group row">
+      <%= form.label :title, "タイトル", class: "col-md-2 col-form-label" %>
+      <div class="col-md-8">
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :description, '説明' %>
-    <%= f.text_area :description %>
-  </div>
+    <div class="form-group row">
+      <%= form.label :description, "概要", class: "col-md-2 col-form-label" %>
+      <div class="col-md-8">
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :start_date, '開始日' %>
-    <%= f.date_select :start_date %>
-  </div>
+    <div class="form-group row">
+      <%= form.label :start_date, "会期", class: "col-md-2 col-form-label" %>
+      <div class="col-md-3">
+        <%= form.date_field :start_date, class: "form-control" %>
+      </div>
+      <div class="col-md-1 text-center">～</div>
+      <div class="col-md-3">
+        <%= form.date_field :end_date, class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :end_date, '終了日' %>
-    <%= f.date_select :end_date %>
-  </div>
+    <div class="form-group row">
+      <%= form.label :start_time, "時間", class: "col-md-2 col-form-label" %>
+      <div class="col-md-3">
+        <%= form.time_select :start_time, class: "form-control" %>
+      </div>
+      <div class="col-md-1 text-center">～</div>
+      <div class="col-md-3">
+        <%= form.time_select :end_time, class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :start_time, '開始時間' %>
-    <%= f.time_select :start_time %>
-  </div>
+    <div class="form-group row">
+      <%= form.label :place, "場所", class: "col-md-2 col-form-label" %>
+      <div class="col-md-8">
+        <%= form.text_field :place, class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :end_time, '終了時間' %>
-    <%= f.time_select :end_time %>
-  </div>
+    <div class="form-group row">
+      <%= form.label :category, "カテゴリ", class: "col-md-2 col-form-label" %>
+      <div class="col-md-8">
+        <%= form.collection_select :category_ids, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, { multiple: true, class: "form-control" } %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :place, '場所' %>
-    <%= f.text_field :place %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image, '画像' %>
-    <%= f.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新", class: 'btn btn-primary' %>
+    <div class="form-group row">
+      <div class="col-md-10 offset-md-2">
+        <%= form.submit "更新する", class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 <% end %>
 
