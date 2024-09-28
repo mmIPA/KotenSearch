@@ -43,3 +43,19 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col-md-2 {
+  width: 90%;
+  padding-left: 20px;
+}
+
+.posts-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :set_categories
+  
   def new
     @post = Post.new
   end
@@ -56,4 +58,9 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path, alert: '指定された投稿は見つかりませんでした。'
     end
   end
+  
+  def set_categories
+    @categories = Category.all
+  end
+
 end
