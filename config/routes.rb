@@ -5,6 +5,7 @@ scope module: :public do
   get '/mypage', to: 'users#show', as: 'mypage'
   resources :users, only: [:edit]
   resources :posts
+  resources :categories, only: [:index, :show]
   root "homes#top"
 end
   

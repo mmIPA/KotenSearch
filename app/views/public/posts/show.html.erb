@@ -13,7 +13,7 @@
       <p class="lead text-muted"><%= @post.start_date.strftime('%Y年%m月%d日') %> 〜 <%= @post.end_date.strftime('%Y年%m月%d日') %></p>
     </div>
   </div>
-
+  <!-- カテゴリ -->
   <div class="row mt-4">
     <% @post.categories.each do |category| %>
       <span><%= category.name %></span>
