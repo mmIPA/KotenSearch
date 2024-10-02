@@ -8,8 +8,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
 
   def update_without_current_password(params, *options)
+    params = params.dup
     params.delete(:password) if params[:password].blank?
     params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    current_password = params.delete(:current_password)
 
     if params[:current_password].present?
       if valid_password?(params[:current_password])

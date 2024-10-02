@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
 scope module: :public do
-  devise_for :users, controllers: {  registrations: 'public/registrations'}
+  devise_for :users, controllers: { registrations: 'public/users/registrations' }
   get '/mypage', to: 'users#show', as: 'mypage'
-  resources :users, only: [:edit]
+  #resources :users, only: [:edit]
   resources :posts
   resources :categories, only: [:index, :show]
   root "homes#top"

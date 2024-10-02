@@ -23,14 +23,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password, "現在のパスワード（パスワードを変更する場合のみ）" %></br>
-    <%= f.password_field :current_password, autocomplete: "current-password" %></br>
-
     <%= f.label :password, '新しいパスワード（変更する場合のみ）' %></br>
-    <%= f.password_field :password, autocomplete: "new-password" %></br>
+    <%= f.password_field :password, autocomplete: "new-password", id: 'password_field' %></br>
     
     <%= f.label :password_confirmation, "新しいパスワード確認" %></br>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %></br>
+  </div>
+
+  <div class="field" id="current_password_field" style="display: none;">
+    <%= f.label :current_password, "現在のパスワード（パスワードを変更する場合のみ）" %></br>
+    <%= f.password_field :current_password, autocomplete: "current-password" %></br>
   </div>
   
 
@@ -38,3 +40,18 @@
     <%= f.submit "更新", class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const passwordField = document.getElementById('password_field');
+    const currentPasswordField = document.getElementById('current_password_field');
+
+    passwordField.addEventListener('input', function() {
+      if (passwordField.value.length > 0) {
+        currentPasswordField.style.display = 'block';
+      } else {
+        currentPasswordField.style.display = 'none';
+      }
+    });
+  });
+</script>
