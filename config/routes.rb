@@ -14,8 +14,8 @@ end
   }
    
   namespace :admin do
-    get 'dashboards', to: 'dashboards#index'
-    resources :users, only: [:destroy]
+    #get 'dashboards', to: 'dashboards#index'
+    resources :users, only: [:index, :destroy]
     resources :categories, only: [:index, :new, :create, :destroy]
   end
 end
