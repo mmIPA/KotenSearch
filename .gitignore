@@ -26,6 +26,9 @@
 /storage/*
 !/storage/.keep
 
+/vendor/bundle
+vendor
+
 /public/assets
 .byebug_history
 
