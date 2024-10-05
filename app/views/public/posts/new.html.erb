@@ -64,11 +64,15 @@
     </div>
 
     <div class="form-group row">
-      <%= form.label :category, "カテゴリ", class: "col-md-2 col-form-label" %>
+      <%= form.label :category_ids, "カテゴリ", class: "col-md-2 col-form-label" %>
       <div class="col-md-8">
-        <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "カテゴリを選んでください" }, class: "form-control" %>
+        <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+          <div class="form-check form-check-inline">
+            <%= b.check_box class: "form-check-input" %>
+            <%= b.label class: "form-check-label" %>
+          </div>
+        <% end %>
       </div>
-    </div>
 
     <div class="form-group row">
       <div class="col-md-10 offset-md-2">
