@@ -6,7 +6,5 @@ class CreatePostCategories < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :posts, :post_id
-    add_foreign_key :post_categories, :posts
   end
 end
