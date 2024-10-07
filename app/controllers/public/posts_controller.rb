@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :set_categories
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   
   def new
     @post = Post.new
@@ -63,4 +65,18 @@ class Public::PostsController < ApplicationController
     @categories = Category.all
   end
 
+  def correct_user
+    unless @post.user_id == current_user.id
+      redirect_to posts_path, alert: '他のユーザーの投稿を編集する権限がありません。'
+    end
+  end
+  
+  def set_post
+    @post = Post.find_by(id: params[:id])
+    unless @post
+      redirect_to posts_path, alert: '指定された投稿は見つかりませんでした。'
+    end
+  end
+  
 end
+
