@@ -14,7 +14,11 @@ scope module: :public do
   resources :posts
   resources :categories, only: [:index, :show]
   root "homes#top"
-end
+  end
+  
+  devise_scope :user do
+    post "public/users/guest_sign_in", to: "public/users/sessions#guest_sign_in", as: :guest_sign_in
+  end
   
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
