@@ -9,7 +9,13 @@
     <!-- 投稿一覧部分 -->
     <div class="col-md-9">
       <div class="posts-container">
-        <h1>投稿一覧</h1>
+        <h1>
+          <% if params[:word].present? %>
+            検索結果
+          <% else %>
+            投稿一覧
+          <% end %>
+        </h1>
 
         <% if @posts.any? %>
           <div class="row">

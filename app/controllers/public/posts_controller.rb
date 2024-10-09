@@ -1,8 +1,8 @@
 class Public::PostsController < ApplicationController
   before_action :set_categories
-  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def new
     @post = Post.new
   end
@@ -20,17 +20,26 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.all
   end
+  
+  def search
+    query = params[:word]
+    if query.present?
+      @posts = Post.joins(:user)
+                   .where('users.name LIKE ? OR posts.title LIKE ? OR posts.description LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%")
+                   .distinct
+    else
+      @posts = Post.all
+    end
+    render :index
+  end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
   
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to @post, notice: '投稿が更新されました。'
     else
@@ -39,7 +48,6 @@ class Public::PostsController < ApplicationController
   end
   
   def destroy
-    @post = Post.find(params[:id]) 
     if @post.user_id == current_user.id
       @post.destroy
       redirect_to mypage_path, notice: '投稿を削除しました。'
@@ -70,13 +78,5 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path, alert: '他のユーザーの投稿を編集する権限がありません。'
     end
   end
-  
-  def set_post
-    @post = Post.find_by(id: params[:id])
-    unless @post
-      redirect_to posts_path, alert: '指定された投稿は見つかりませんでした。'
-    end
-  end
-  
 end
 
