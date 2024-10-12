@@ -1,0 +1,26 @@
+<head>
+  <title>管理者ページ</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&amp;display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/c3316d311d.js" crossorigin="anonymous"></script>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<nav class="navbar">
+  <div class="navbar-left">
+    <%= link_to root_path do %>
+      個展サーチ<i class="fas fa-paint-brush"></i>
+    <% end %>
+  </div>
+          
+  <div class="navbar-right">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -18,4 +18,3 @@ import "../stylesheets/homes.scss";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
