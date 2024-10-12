@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row" style="padding: 20px;">
+    <h1>ユーザー詳細</h1>
+  </div>
+  <div class="row" style="padding: 10px;">
+    <p><strong>名前:</strong> <%= @user.name %></p>
+    <p><strong>メールアドレス:</strong> <%= @user.email %></p>
+  </div>
+
+  <div class="row" style="padding: 10px;">
+    <%= link_to 'ユーザー削除', admin_user_path(@user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' }, class: 'btn btn-danger' %>
+  </div>
+
+  <div class="row" style="padding: 10px;">
+    <h2>投稿一覧</h2>
+  </div>
+
+  <% if @user.posts.any? %>
+    <div class="row">
+      <% @user.posts.each do |post| %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <% if post.image.present? %>
+              <%= image_tag post.image.url, class: 'card-img-top', alt: post.title %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= truncate(post.description, length: 100) %></p>
+              <p><strong>場所:</strong> <%= post.place %></p>
+              <p><strong>期間:</strong> <%= post.start_date %> 〜 <%= post.end_date %></p>
+              <%= link_to '詳細を確認', post_path(post), class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>投稿はありません。</p>
+  <% end %>
+</div>
