@@ -62,3 +62,58 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* コメント入力欄 */
+.custom-textarea {
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  font-size: 16px;
+}
+
+.custom-submit {
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-submit:hover {
+  background-color: #45a049; /* ホバー時の色 */
+}
+
+.custom-comment {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+}
+
+.custom-comment h6 {
+  font-weight: bold;
+}
+
+.custom-comment p {
+  font-size: 14px;
+  color: #555;
+}
+
+.custom-comment .btn {
+  margin-left: auto;
+}
+
+.custom-delete-btn {
+  background-color: white;
+  color: #ff7f7f;
+  border: none; /* 境界線を消す */
+}
+
+.custom-delete-btn:hover {
+  background-color: #ff9e9e; /* ホバー時の色 */
+  color: white;
+}

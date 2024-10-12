@@ -16,19 +16,19 @@
   <!-- カテゴリ -->
   <div class="row mt-4">
     <% @post.categories.each do |category| %>
-      <span><%= category.name %></span>
+      <span>#<%= category.name %></span>
     <% end %>
   </div>
   
   <!-- 投稿詳細 -->
   <div class="row mt-5">
     <!-- 投稿説明 -->
-    <div class="col-md-8">
+    <div class="col-md-7">
       <p><%= @post.description %></p>
     </div>
 
     <!-- 日時・場所 -->
-    <div class="col-md-4">
+    <div class="col-md-5">
       <div class="border rounded p-4 bg-light">
         <h4>開催情報</h4>
         <hr>
@@ -38,6 +38,31 @@
       </div>
     </div>
   </div>
+    <!-- コメント -->
+  <%= form_with(model: [ @post, @post.comments.new ], local: true) do |f| %>
+    <%= f.text_area :content, class: "custom-textarea", rows: 3, placeholder: "コメントを入力してください..." %>
+    <%= f.submit "コメントを投稿する", class: "custom-submit" %>
+  <% end %>
+
+  <h3 class="mt-4">コメント一覧</h3>
+<% if @post.comments.any? %>
+  <% @post.comments.each do |comment| %>
+    <% if comment.user.present? %>
+      <div class="custom-comment d-flex justify-content-between align-items-center">
+        <div>
+          <h6 class="mb-1"><strong><%= comment.user.name %></strong></h6>
+          <p class="mb-0"><%= comment.content %></p>
+        </div>
+        
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(@post, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn custom-delete-btn btn-sm" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>まだコメントがありません。</p>
+<% end %>
   
   <% if @post.user == current_user %>
     <div class="row mt-5">
