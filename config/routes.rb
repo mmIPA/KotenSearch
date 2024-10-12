@@ -11,7 +11,7 @@ scope module: :public do
     resources :comments, only: [:create, :destroy]
   end  
 
-   resources :categories, only: [:index, :show]
+  resources :categories, only: [:index, :show]
   root "homes#top"
   end
   
@@ -24,7 +24,7 @@ scope module: :public do
   }
    
   namespace :admin do
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :show, :destroy]
     resources :categories, only: [:index, :new, :create, :destroy]
   end
 end
