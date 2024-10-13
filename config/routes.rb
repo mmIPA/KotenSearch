@@ -26,5 +26,6 @@ scope module: :public do
   namespace :admin do
     resources :users, only: [:index, :show, :destroy]
     resources :categories, only: [:index, :new, :create, :destroy]
+    resources :comments, only: [:index, :destroy] 
   end
 end

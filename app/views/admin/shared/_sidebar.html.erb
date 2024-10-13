@@ -2,10 +2,13 @@
   <div class="sidebar-sticky">
     <ul class="nav flex-column mt-4">
       <li class="nav-item-side" style="margin: 10px 0;">
-        <%= link_to 'ユーザー一覧', admin_users_path, class: "nav-link #{active_class(admin_users_path)}" %>
+        <%= link_to 'ユーザー一覧', admin_users_path, class: "nav-link" %>
       </li>
       <li class="nav-item-side" style="margin: 10px 0;">
-        <%= link_to 'カテゴリ管理', admin_categories_path, class: "nav-link #{active_class(admin_categories_path)}" %>
+        <%= link_to 'カテゴリ管理', admin_categories_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item-side" style="margin: 10px 0;">
+        <%= link_to 'コメント一覧', admin_comments_path, class: "nav-link" %>
       </li>
     </ul>
   </div>
