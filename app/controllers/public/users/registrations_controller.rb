@@ -10,6 +10,11 @@ module Public
         end
       end
 
+      def destroy
+        super do |resource|
+          redirect_to root_path, notice: '退会が完了しました。' if resource.destroyed?
+        end
+      end
       private
 
       def user_params
