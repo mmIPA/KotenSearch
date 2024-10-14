@@ -14,6 +14,9 @@ module KotenSearch
     
     config.load_defaults 6.1
 
+    config.time_zone = 'Asia/Tokyo'  # 日本時間に設定
+    config.active_record.default_timezone = :local  # DBの保存をローカルタイムに
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
