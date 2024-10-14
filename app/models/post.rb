@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   validates :end_time, presence: true
   validates :place, presence: true
   validates :image, presence: true
+  validates :categories, presence: true
   validate :image_size_validation
   
   private
