@@ -9,12 +9,18 @@ module Public
           render :edit
         end
       end
-
+      
       def destroy
-        super do |resource|
-          redirect_to root_path, notice: '退会が完了しました。' if resource.destroyed?
+        @user = current_user
+        if @user.update(is_deleted: true)
+          sign_out @user   # ログアウト処理を追加
+          redirect_to root_path, notice: '退会が完了しました。'
+        else
+         # エラーが発生した場合の処理
+          redirect_to mypage_path, alert: '退会処理に失敗しました。'
         end
       end
+
       private
 
       def user_params
