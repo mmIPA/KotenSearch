@@ -13,3 +13,5 @@ ja:
       invalid: "メールアドレスまたはパスワードが正しくありません"
       user:
         invalid: "入力された情報が無効です"
+    
+      unauthenticated: "ログインしてください。"
