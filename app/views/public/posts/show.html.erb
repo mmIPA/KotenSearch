@@ -16,7 +16,7 @@
   <!-- カテゴリ -->
   <div class="row mt-4">
     <% @post.categories.each do |category| %>
-      <span>#<%= category.name %></span>
+      <span><%= link_to "##{category.name}", category_path(category) %></span>
     <% end %>
   </div>
   
@@ -35,6 +35,37 @@
         <p><strong>開催日:</strong> <%= @post.start_date.strftime('%Y年%m月%d日') %>(<%= I18n.t('date.abbr_day_names')[@post.start_date.wday] %>) 〜 <%= @post.end_date.strftime('%Y年%m月%d日') %>(<%= I18n.t('date.abbr_day_names')[@post.end_date.wday] %>)</p>
         <p><strong>開催時間:</strong> <%= @post.start_time.strftime('%H:%M') %> 〜 <%= @post.end_time.strftime('%H:%M') %></p>
         <p><strong>開催場所:</strong> <%= @post.place %></p>
+      </div>
+    </div>
+  </div>
+  
+   <!-- SNSリンク -->
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <div>
+        <% if @post.user.twitter.present? %>
+          <%= link_to @post.user.twitter, target: "_blank", rel: "noopener noreferrer" do %>
+            <i class="fa-brands fa-square-twitter fa-2x"></i>
+          <% end %>
+        <% end %>
+        
+        <% if @post.user.instagram.present? %>
+          <%= link_to @post.user.instagram, target: "_blank", rel: "noopener noreferrer" do %>
+            <i class="fa-brands fa-square-instagram fa-2x" style="color: #000000;"></i></i>
+          <% end %>
+        <% end %>
+
+        <% if @post.user.facebook.present? %>
+          <%= link_to @post.user.facebook, target: "_blank", rel: "noopener noreferrer" do %>
+            <i class="fa-brands fa-facebook fa-2x" style="color: #1877f2;"></i>
+          <% end %>
+        <% end %>
+        
+        <% if @post.user.tiktok.present? %>
+          <%= link_to @post.user.tiktok, target: "_blank", rel: "noopener noreferrer" do %>
+            <i class="fa-brands fa-tiktok fa-2x" style="color: #000000;"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

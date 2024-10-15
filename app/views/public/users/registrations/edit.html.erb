@@ -21,7 +21,27 @@
     <%= f.label :email, 'メールアドレス' %></br>
     <%= f.email_field :email %>
   </div>
+  <!-- SNS -->
+  <div class="form-group">
+    <%= f.label :twitter, "Twitter URL" %>
+    <%= f.text_field :twitter, class: "form-control" %>
+  </div>
 
+  <div class="form-group">
+    <%= f.label :instagram, "Instagram URL" %>
+    <%= f.text_field :instagram, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :facebook, "Facebook URL" %>
+    <%= f.text_field :facebook, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :tiktok, "TikTok URL" %>
+    <%= f.text_field :tiktok, class: "form-control" %>
+  </div>
+  <!-- パスワード -->
   <div class="field">
     <%= f.label :current_password, "現在のパスワード（パスワードを変更する場合のみ）" %></br>
     <%= f.password_field :current_password, autocomplete: "current-password" %></br>

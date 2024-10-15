@@ -23,7 +23,7 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :twitter, :instagram, :facebook, :tiktok)
   end
 
   def ensure_guest_user
