@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :post_categories, dependent: :destroy
   has_many :categories, through: :post_categories
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_by_users, through: :favorites, source: :user
   
   mount_uploader :image, ImageUploader
 
@@ -16,6 +18,10 @@ class Post < ApplicationRecord
   validates :image, presence: true
   validates :categories, presence: true
   validate :image_size_validation
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
   
   private
 
