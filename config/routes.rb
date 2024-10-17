@@ -9,6 +9,7 @@ scope module: :public do
       get 'search'
     end
     resources :comments, only: [:create, :destroy]
+    resource :favorite, only: [:create, :destroy]
   end  
 
   resources :categories, only: [:index, :show]
