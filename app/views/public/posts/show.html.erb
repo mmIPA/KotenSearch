@@ -45,8 +45,6 @@
     <!-- 日時・場所 -->
     <div class="col-md-5">
       <div class="border rounded p-4 bg-light">
-        <h4>開催情報</h4>
-        <hr>
         <p><strong>開催日:</strong> <%= @post.start_date.strftime('%Y年%m月%d日') %>(<%= I18n.t('date.abbr_day_names')[@post.start_date.wday] %>) 〜 <%= @post.end_date.strftime('%Y年%m月%d日') %>(<%= I18n.t('date.abbr_day_names')[@post.end_date.wday] %>)</p>
         <p><strong>開催時間:</strong> <%= @post.start_time.strftime('%H:%M') %> 〜 <%= @post.end_time.strftime('%H:%M') %></p>
         <p><strong>開催場所:</strong> <%= @post.place %></p>

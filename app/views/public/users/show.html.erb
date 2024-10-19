@@ -1,10 +1,26 @@
-<div class="container">
-  <div class="row" style="padding: 10px; flex-direction: column;">
-    <p style="font-size: 24px;"><%= @user.name %></p>
-    <p><%= @user.email %></p>
+<div class="container mt-4">
+  <!-- ユーザー情報（名前と編集ボタン）-->
+  <div class="row">
+    <div class="col-md-6">
+      <p style="font-size: 24px;"><%= @user.name %></p>
+    </div>
+    <div class="col-md-6 text-right">
+      <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-outline-primary', style: 'border: 1px solid #3190d8; color: #3190d8; background-color: #fff;' %>
+    </div>
   </div>
-  
-    <ul style="list-style-type: none; padding-left: 0;">
+
+  <!-- メールアドレスと退会ボタン -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <p><%= @user.email %></p>
+    </div>
+    <div class="col-md-6 text-right">
+      <%= link_to '退会する', user_registration_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-danger', style: 'color: #fff; background-color: #ff5757;' %>
+    </div>
+  </div>
+
+  <!-- SNSリンク -->
+  <ul style="list-style-type: none; padding-left: 0;">
       
       <% if @user.twitter.present? %>
       <li>
@@ -27,17 +43,14 @@
           <i class="fa-brands fa-tiktok" style="color: #778899;"></i> <%= @user.tiktok %>
         </li>
       <% end %>
+  </ul>
+
+  <!-- 新規投稿ボタン -->
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <%= link_to '新規投稿', new_post_path, class: 'btn btn-outline-primary', style: 'border: 2px solid #3190d8; color: #3190d8; background-color: #fff; width: 200px;' %>
+    </div>
   </div>
-  
-  <% unless @user.guest_user? %>
-  <div class="row" style="padding: 10px;">
-    <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn mr-2', style: 'background-color: #3190d8; color: #fff;' %>
-    <%= link_to '退会する', user_registration_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' },  class: 'btn mr-2', style: 'background-color: #3190d8; color: #fff;' %>
-  </div>
-  <div class="row" style="padding: 10px;">
-    <button type="button" class="btn btn-outline-primary"><%= link_to '新規投稿', new_post_path %></button>
-  </div>
-  <% end %>
   
   <!-- タブメニュー -->
   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -92,7 +105,7 @@
                   <p class="card-text"><%= truncate(post.description, length: 100) %></p>
                   <p><strong>場所:</strong> <%= post.place %></p>
                   <p><strong>期間:</strong> <%= post.start_date %> 〜 <%= post.end_date %></p>
-                  <%= link_to '詳細を確認', post_path(post), class: 'btn btn-primary' %>
+                  <%= link_to '詳細を確認', post_path(post), class: 'btn mr-2', style: 'background-color: #3190d8; color: #fff;' %>
                 </div>
               </div>
             </div>
