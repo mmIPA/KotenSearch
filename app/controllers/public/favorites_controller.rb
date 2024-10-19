@@ -19,4 +19,10 @@ class Public::FavoritesController < ApplicationController
       format.js
     end
   end
+  
+  def show
+    @user = current_user
+    @posts = @user.posts
+    @liked_posts = @user.favorites.map(&:post)
+  end
 end

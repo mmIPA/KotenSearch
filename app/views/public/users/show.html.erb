@@ -1,71 +1,105 @@
 <div class="container">
-  <div class="row" style="padding: 20px;">
-    <h1>マイページ</h1>
-  </div>
-  <div class="row" style="padding: 10px;">
-    <p><strong>名前:</strong> <%= @user.name %></p>
-    <p><strong>メールアドレス:</strong> <%= @user.email %></p>
+  <div class="row" style="padding: 10px; flex-direction: column;">
+    <p style="font-size: 24px;"><%= @user.name %></p>
+    <p><%= @user.email %></p>
   </div>
   
     <ul style="list-style-type: none; padding-left: 0;">
       
       <% if @user.twitter.present? %>
       <li>
-        <i class="fa-brands fa-twitter"></i> <%= @user.twitter %>
+        <i class="fa-brands fa-twitter" style="color: #63E6BE;"></i> <%= @user.twitter %>
       </li>
       <% end %>
       
       <% if @user.instagram.present? %>
         <li>
-          <i class="fa-brands fa-square-instagram"></i> <%= @user.instagram %>
+          <i class="fa-brands fa-square-instagram" style="color: #778899;"></i> <%= @user.instagram %>
         </li>
       <% end %>
       <% if @user.facebook.present? %>
         <li>
-          <i class="fa-brands fa-facebook"></i> <%= @user.facebook %>
+          <i class="fa-brands fa-facebook" style="color: #74C0FC;"></i> <%= @user.facebook %>
         </li>
       <% end %>
       <% if @user.tiktok.present? %>
         <li> 
-          <i class="fa-brands fa-tiktok"></i><%= @user.tiktok %>
+          <i class="fa-brands fa-tiktok" style="color: #778899;"></i> <%= @user.tiktok %>
         </li>
       <% end %>
   </div>
   
   <% unless @user.guest_user? %>
   <div class="row" style="padding: 10px;">
-    <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-primary  mr-2' %>
-    <%= link_to '退会する', user_registration_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-primary' %>
+    <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn mr-2', style: 'background-color: #3190d8; color: #fff;' %>
+    <%= link_to '退会する', user_registration_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' },  class: 'btn mr-2', style: 'background-color: #3190d8; color: #fff;' %>
   </div>
   <div class="row" style="padding: 10px;">
     <button type="button" class="btn btn-outline-primary"><%= link_to '新規投稿', new_post_path %></button>
   </div>
   <% end %>
   
-    <div class="row" style="padding: 10px;">
-    <h2>自分の投稿一覧</h2>
-  </div>
+  <!-- タブメニュー -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="my-posts-tab" data-toggle="tab" href="#my-posts" role="tab" aria-controls="my-posts" aria-selected="true">自分の投稿</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="liked-posts-tab" data-toggle="tab" href="#liked-posts" role="tab" aria-controls="liked-posts" aria-selected="false">いいねした投稿</a>
+    </li>
+  </ul>
 
-  <% if @posts.any? %>
-    <div class="row">
-      <% @posts.each do |post| %>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <% if post.image.present? %>
-              <%= image_tag post.image.url, class: 'card-img-top', alt: post.title %>
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= post.title %></h5>
-              <p class="card-text"><%= truncate(post.description, length: 100) %></p>
-              <p><strong>場所:</strong> <%= post.place %></p>
-              <p><strong>期間:</strong> <%= post.start_date %> 〜 <%= post.end_date %></p>
-              <%= link_to '詳細を確認', post_path(post), class: 'btn btn-primary' %>
+  <!-- タブの内容 -->
+  <div class="tab-content" id="myTabContent">
+    <!-- 自分の投稿一覧 -->
+    <div class="tab-pane fade show active" id="my-posts" role="tabpanel" aria-labelledby="my-posts-tab">
+      <% if @posts.any? %>
+        <div class="row">
+          <% @posts.each do |post| %>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <% if post.image.present? %>
+                  <%= image_tag post.image.url, class: 'card-img-top', alt: post.title %>
+                <% end %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= post.title %></h5>
+                  <p class="card-text"><%= truncate(post.description, length: 100) %></p>
+                  <p><strong>場所:</strong> <%= post.place %></p>
+                  <p><strong>期間:</strong> <%= post.start_date %> 〜 <%= post.end_date %></p>
+                  <%= link_to '詳細を確認', post_path(post),  class: 'btn mr-2', style: 'background-color: #3190d8; color: #fff;' %>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
+      <% else %>
+        <p>現在、投稿はありません。</p>
       <% end %>
     </div>
-  <% else %>
-    <p>現在、投稿はありません。</p>
-  <% end %>
-</div>
+
+    <!-- いいねした投稿一覧 -->
+    <div class="tab-pane fade" id="liked-posts" role="tabpanel" aria-labelledby="liked-posts-tab">
+      <% if @liked_posts.present? && @liked_posts.any? %>
+        <div class="row">
+          <% @liked_posts.each do |post| %>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <% if post.image.present? %>
+                  <%= image_tag post.image.url, class: 'card-img-top', alt: post.title %>
+                <% end %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= post.title %></h5>
+                  <p class="card-text"><%= truncate(post.description, length: 100) %></p>
+                  <p><strong>場所:</strong> <%= post.place %></p>
+                  <p><strong>期間:</strong> <%= post.start_date %> 〜 <%= post.end_date %></p>
+                  <%= link_to '詳細を確認', post_path(post), class: 'btn btn-primary' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p>いいねした投稿はありません。</p>
+      <% end %>
+    </div>
+  </div>

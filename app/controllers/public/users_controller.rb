@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = current_user
     @posts = @user.posts
+    @liked_posts = Post.joins(:favorites).where(favorites: { user_id: @user.id })
   end
   
   def edit

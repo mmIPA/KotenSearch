@@ -60,25 +60,25 @@
       <div>
         <% if @post.user.twitter.present? %>
           <%= link_to @post.user.twitter, target: "_blank", rel: "noopener noreferrer" do %>
-            <i class="fa-brands fa-square-twitter fa-2x"></i>
+            <i class="fa-brands fa-square-twitter fa-2x" style="color: #63E6BE;"></i>
           <% end %>
         <% end %>
         
         <% if @post.user.instagram.present? %>
           <%= link_to @post.user.instagram, target: "_blank", rel: "noopener noreferrer" do %>
-            <i class="fa-brands fa-square-instagram fa-2x" style="color: #000000;"></i></i>
+            <i class="fa-brands fa-square-instagram fa-2x" style="color: #778899;"></i></i>
           <% end %>
         <% end %>
 
         <% if @post.user.facebook.present? %>
           <%= link_to @post.user.facebook, target: "_blank", rel: "noopener noreferrer" do %>
-            <i class="fa-brands fa-facebook fa-2x" style="color: #1877f2;"></i>
+            <i class="fa-brands fa-facebook fa-2x" style="color: #63E6BE;"></i>
           <% end %>
         <% end %>
         
         <% if @post.user.tiktok.present? %>
           <%= link_to @post.user.tiktok, target: "_blank", rel: "noopener noreferrer" do %>
-            <i class="fa-brands fa-tiktok fa-2x" style="color: #000000;"></i>
+            <i class="fa-brands fa-tiktok fa-2x" style="color: #778899;"></i>
           <% end %>
         <% end %>
       </div>
@@ -90,7 +90,7 @@
     <%= f.submit "コメントを投稿する", class: "custom-submit" %>
   <% end %>
 
-  <h3 class="mt-4">コメント一覧</h3>
+  <div class="mt-4">コメント一覧</div>
 <% if @post.comments.any? %>
   <% @post.comments.each do |comment| %>
     <% if comment.user.present? %>
@@ -113,8 +113,8 @@
   <% if @post.user == current_user %>
     <div class="row mt-5">
       <div class="col-12 text-center">
-        <%= link_to '投稿を編集する', edit_post_path(@post), class: 'btn btn-warning' %>
-        <%= link_to '投稿を削除する', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+        <%= link_to '投稿を編集する', edit_post_path(@post),class: 'btn', style: 'background-color: #FFD43B; color: #696969;' %>
+        <%= link_to '投稿を削除する', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn', style: 'background-color: #ff5757; color: #fff;' %>
       </div>
     </div>
   <% end %>

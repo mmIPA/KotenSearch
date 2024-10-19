@@ -117,3 +117,11 @@ body {
   background-color: #ff9e9e; /* ホバー時の色 */
   color: white;
 }
+
+a {
+  color: #3190d8;  /* 変更したい色に設定 */
+}
+
+a:hover {
+  color: #45B39D;  /* ホバー時の色 */
+}
