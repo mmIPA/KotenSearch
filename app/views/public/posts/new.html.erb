@@ -48,11 +48,11 @@
   <div class="form-group row">
     <%= form.label :start_time, "時間", class: "col-md-2 col-form-label" %>
     <div class="col-md-3">
-      <%= form.time_select :start_time, { default: Time.new.change(hour: 10, min: 0) }, { minute_step: 15 } %>
+      <%= form.time_select :start_time, { default: Time.new.change(hour: 10, min: 0), minute_step: 15 } %>
     </div>
     <div class="col-md-1 text-center">～</div>
     <div class="col-md-3">
-      <%= form.time_select :end_time, { default: Time.new.change(hour: 18, min: 0) }, { minute_step: 15 } %>
+      <%= form.time_select :end_time, { default: Time.new.change(hour: 18, min: 0), minute_step: 15 } %>
     </div>
   </div>
 
