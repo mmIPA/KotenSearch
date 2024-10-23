@@ -1,12 +1,17 @@
 ---
 ja:
   activerecord:
+    attributes:
+      post:
+        end_date: "終了日"
+        start_date: "開始日"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+        end_date_after_start_date: "終了日は開始日より後の日付を選択してください"
   date:
     abbr_day_names:
     - 日

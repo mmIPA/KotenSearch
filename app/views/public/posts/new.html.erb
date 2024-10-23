@@ -37,11 +37,11 @@
   <div class="form-group row">
     <%= form.label :start_date, "会期", class: "col-md-2 col-form-label" %>
     <div class="col-md-3">
-      <%= form.date_field :start_date, class: "form-control" %>
+      <%= form.date_field :start_date, class: "form-control", id: "start_date" %>
     </div>
     <div class="col-md-1 text-center">～</div>
     <div class="col-md-3">
-      <%= form.date_field :end_date, class: "form-control" %>
+      <%= form.date_field :end_date, class: "form-control", id: "end_date" %>
     </div>
   </div>
 
