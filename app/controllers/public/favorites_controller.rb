@@ -31,7 +31,7 @@ class Public::FavoritesController < ApplicationController
 
   def guest_user_restriction
     if current_user.guest_user?
-      redirect_to root_path, alert: 'ゲストユーザーはいいね機能を利用できません。'
+      redirect_to request.referer || post_path(@post), alert: 'ゲストユーザーはいいね機能を利用できません。'
     end
   end
   

@@ -74,13 +74,15 @@
       </div>
     </div>
   </div>
-    <!-- コメント -->
-  <%= form_with(model: [ @post, @post.comments.new ], local: true) do |f| %>
-    <%= f.text_area :content, class: "custom-textarea", rows: 3, placeholder: "コメントを入力してください..." %>
-    <%= f.submit "コメントを投稿する", class: "custom-submit" %>
+    <!-- コメント投稿フォーム -->
+  <% if user_signed_in? && !current_user.guest_user? %>
+    <%= form_with(model: [ @post, @post.comments.new ], local: true) do |f| %>
+      <%= f.text_area :content, class: "custom-textarea", rows: 3, placeholder: "コメントを入力してください..." %>
+      <%= f.submit "コメントを投稿する", class: "custom-submit" %>
+    <% end %>
   <% end %>
 
-  <div class="mt-4">コメント一覧</div>
+  <div class="mt-4"><i class="fas fa-comments"style="color: #7fffbf;"></i> コメント一覧</div>
     <% if @post.comments.any? %>
       <% @post.comments.each do |comment| %>
         <% if comment.user.present? %>
