@@ -17,8 +17,9 @@
   <div class="row mt-4">
     <div class="col d-flex align-items-center">
       <!-- いいねボタン -->
-      <%= render partial: "public/favorites/favorite_button", locals: { post: @post } %>
-
+      <div class="favorite-button-container mr-4">
+        <%= render partial: "public/favorites/favorite_button", locals: { post: @post } %>
+      </div>
       <!-- カテゴリ -->
       <div class="ml-3">
       <% @post.categories.each do |category| %>

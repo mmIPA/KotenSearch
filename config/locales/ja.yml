@@ -192,4 +192,5 @@ ja:
       signed_up: "登録が完了しました。"
       user:
         signed_up: "ユーザーの登録が完了しました。"
-    
+    failure:
+      already_authenticated: ""

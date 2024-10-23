@@ -125,3 +125,7 @@ a {
 a:hover {
   color: #45B39D;  /* ホバー時の色 */
 }
+
+.favorite-button-container {
+  min-width: 100px; /* 幅を広げる */
+}
