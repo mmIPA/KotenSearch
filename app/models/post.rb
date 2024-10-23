@@ -20,6 +20,7 @@ class Post < ApplicationRecord
   validate :image_size_validation
   
   def favorited_by?(user)
+    return false unless user
     favorites.exists?(user_id: user.id)
   end
   

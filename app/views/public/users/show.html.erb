@@ -4,9 +4,12 @@
     <div class="col-md-6">
       <p style="font-size: 24px;"><%= @user.name %></p>
     </div>
-    <div class="col-md-6 text-right">
-      <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-outline-primary', style: 'border: 1px solid #3190d8; color: #3190d8; background-color: #fff;' %>
-    </div>
+    
+    <% unless current_user.guest_user? %>
+      <div class="col-md-6 text-right">
+        <%= link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-outline-primary', style: 'border: 1px solid #3190d8; color: #3190d8; background-color: #fff;' %>
+      </div>
+    <% end %>
   </div>
 
   <!-- メールアドレスと退会ボタン -->
@@ -14,14 +17,17 @@
     <div class="col-md-6">
       <p><%= @user.email %></p>
     </div>
-    <div class="col-md-6 text-right">
-      <%= link_to '退会する', user_registration_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-danger', style: 'color: #fff; background-color: #ff5757;' %>
-    </div>
+    <% unless current_user.guest_user? %>
+      <div class="col-md-6 text-right">
+        <%= link_to '退会する', user_registration_path(@user), method: :delete, data: { confirm: '本当に退会しますか？' }, class: 'btn btn-danger', style: 'color: #fff; background-color: #ff5757;' %>
+      </div>
+    <% end %>
   </div>
 
   <!-- SNSリンク -->
-  <ul style="list-style-type: none; padding-left: 0;">
-      
+  <% unless current_user.guest_user? %>
+    <ul style="list-style-type: none; padding-left: 0;">
+        
       <% if @user.twitter.present? %>
       <li>
         <i class="fa-brands fa-twitter" style="color: #63E6BE;"></i> <%= @user.twitter %>
@@ -43,14 +49,17 @@
           <i class="fa-brands fa-tiktok" style="color: #778899;"></i> <%= @user.tiktok %>
         </li>
       <% end %>
-  </ul>
+    </ul>
+  <% end %>
 
   <!-- 新規投稿ボタン -->
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <%= link_to '新規投稿', new_post_path, class: 'btn btn-outline-primary', style: 'border: 2px solid #3190d8; color: #3190d8; background-color: #fff; width: 200px;' %>
+  <% unless current_user.guest_user? %>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to '新規投稿', new_post_path, class: 'btn btn-outline-primary', style: 'border: 2px solid #3190d8; color: #3190d8; background-color: #fff; width: 200px;' %>
+      </div>
     </div>
-  </div>
+  <% end %>
   
   <!-- タブメニュー -->
   <ul class="nav nav-tabs" id="myTab" role="tablist">

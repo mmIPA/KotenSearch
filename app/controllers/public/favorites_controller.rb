@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_user!
+  before_action :guest_user_restriction, only: [:create, :destroy]
 
   def create
     @post = Post.find(params[:post_id])
@@ -25,4 +26,13 @@ class Public::FavoritesController < ApplicationController
     @posts = @user.posts
     @liked_posts = @user.favorites.map(&:post)
   end
+  
+  private
+
+  def guest_user_restriction
+    if current_user.guest_user?
+      redirect_to root_path, alert: 'ゲストユーザーはいいね機能を利用できません。'
+    end
+  end
+  
 end
