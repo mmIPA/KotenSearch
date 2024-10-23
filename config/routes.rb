@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 scope module: :public do
   devise_for :users, controllers: { registrations: 'public/users/registrations' }
   get '/mypage', to: 'users#show', as: 'mypage'
+  get "users" => redirect("/users/sign_up")
   
   resources :posts do
     collection do
@@ -13,8 +14,9 @@ scope module: :public do
   end  
 
   resources :categories, only: [:index, :show]
+  
   root "homes#top"
-  end
+end
   
   devise_scope :user do
     post "public/users/guest_sign_in", to: "public/users/sessions#guest_sign_in", as: :guest_sign_in

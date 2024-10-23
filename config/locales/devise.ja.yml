@@ -3,7 +3,7 @@ ja:
     sessions:
       user:
         signed_in: "ログインしました。"
-      signed_out: "ログアウトしました。"
+        signed_out: "ログアウトしました。"
       
     failure:
       not_found_in_database: "メールアドレスまたはパスワードが正しくありません"
@@ -15,3 +15,18 @@ ja:
         invalid: "入力された情報が無効です"
     
       unauthenticated: "ログインしてください。"
+      
+  errors:
+    messages:
+      not_saved: 
+        one: "%{resource}の登録に失敗しました: 1件のエラーがあります。"
+        other: "%{resource}の登録に失敗しました: %{count}件のエラーがあります。"
+      
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        name: "おなまえ"
