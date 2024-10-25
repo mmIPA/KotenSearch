@@ -129,3 +129,11 @@ a:hover {
 .favorite-button-container {
   min-width: 100px; /* 幅を広げる */
 }
+
+.title {
+  font-size: 3rem; /* タイトルの大きさを設定 */
+  text-align: center; /* 中央揃え */
+  padding-bottom: 10px; /* 下の線と文字の間にスペースを追加 */
+  border-bottom: 2px dashed #ddd; /* 破線を追加 */
+  display: inline-block; /* テキストの幅に合わせて線を引く */
+}
