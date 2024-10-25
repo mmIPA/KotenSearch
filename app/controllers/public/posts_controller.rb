@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy] 
+  before_action :restrict_guest_user, only: [:new, :create]
   before_action :set_categories
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
@@ -61,6 +62,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :start_date, :end_date, :start_time, :end_time, :place, :image, category_ids: [])
+  end
+  
+  def restrict_guest_user
+    if current_user.guest_user?
+      redirect_to posts_path, alert: 'ゲストユーザーは投稿できません。'
+    end
   end
   
   def set_post
