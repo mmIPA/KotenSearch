@@ -5,42 +5,6 @@ body {
   font-family: 'BIZ UDPMincho', serif;
 }
 
-.navbar {
-  color: #ffffff;
-  display: flex;
-  justify-content: space-between;  /* 左右の要素を分ける */
-  align-items: center;
-  padding: 10px 20px;  /* ヘッダーの上下左右に余白を設定 */
-  background-color: #b7cfc4;  /* 必要に応じて背景色を設定 */
-  font-family: "M PLUS 1p", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.navbar a,
-.navbar a:hover {
-  color: #fff;
-}
-
-.navbar-left {
-  font-size: 24px;
-}
-
-.navbar-right {
-  display: flex;
-}
-
-.nav-list {
-  display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  padding: 20px;
-}
-
 .container {
   width: 80%;
   margin: 0 auto;
@@ -83,7 +47,7 @@ body {
 }
 
 .custom-submit:hover {
-  background-color: #45a049; /* ホバー時の色 */
+  background-color: #45a049;
 }
 
 .custom-comment {
@@ -110,30 +74,51 @@ body {
 .custom-delete-btn {
   background-color: white;
   color: #ff7f7f;
-  border: none; /* 境界線を消す */
+  border: none;
 }
 
 .custom-delete-btn:hover {
-  background-color: #ff9e9e; /* ホバー時の色 */
+  background-color: #ff9e9e;
   color: white;
 }
 
 a {
-  color: #3190d8;  /* 変更したい色に設定 */
+  color: #3190d8;
 }
 
 a:hover {
-  color: #45B39D;  /* ホバー時の色 */
+  color: #45B39D;
 }
 
 .favorite-button-container {
-  min-width: 100px; /* 幅を広げる */
+  min-width: 100px; 
 }
 
 .title {
-  font-size: 3rem; /* タイトルの大きさを設定 */
-  text-align: center; /* 中央揃え */
-  padding-bottom: 10px; /* 下の線と文字の間にスペースを追加 */
-  border-bottom: 2px dashed #ddd; /* 破線を追加 */
-  display: inline-block; /* テキストの幅に合わせて線を引く */
+  font-size: 3rem; 
+  text-align: center; 
+  padding-bottom: 10px;
+  border-bottom: 2px dashed #ddd; 
+  display: inline-block; 
+}
+
+/* エラーメッセージ */
+#error_explanation {
+  background-color: #f8d7da; 
+  border: 1px solid #f5c6cb;
+  color: #721c24; 
+  padding: 15px;
+  border-radius: 5px;
+}
+
+#error_explanation ul {
+  padding-left: 20px;
+}
+
+#error_explanation li {
+  font-size: 0.9rem;
+}
+
+#error_explanation h2, #error_explanation p { /* h2って書いてないけどデベロッパーツールにはh2って書かれてるのでそれに合わせてる */
+  font-size: 1rem;
 }

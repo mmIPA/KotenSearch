@@ -1,27 +1,6 @@
 module Public
   module Users
     class RegistrationsController < Devise::RegistrationsController
-      
-
-      def create
-        build_resource(sign_up_params)
-      
-        if resource.save
-          if resource.active_for_authentication?
-            set_flash_message! :notice, :signed_up
-            sign_up(resource_name, resource)
-            redirect_to mypage_path
-          else
-            set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-            expire_data_after_sign_in!
-            redirect_to mypage_path
-          end
-        else
-          clean_up_passwords(resource)
-          set_minimum_password_length
-          respond_with resource, location: new_user_registration_path # 失敗時に /users/sign_up へリダイレクト
-        end
-      end
 
       def update
         if current_user.update_without_current_password(user_params)
