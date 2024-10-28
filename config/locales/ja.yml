@@ -5,6 +5,7 @@ ja:
     attributes:
       user:
         email: "メールアドレス"
+        current_password: "パスワード"
         password: "パスワード"
         password_confirmation: "パスワード（確認）"
         name: "おなまえ"
@@ -16,7 +17,7 @@ ja:
         user:
           attributes:
             password_confirmation:
-              confirmation: "パスワードが一致しません"
+              confirmation: "とパスワードが一致しません"
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
@@ -30,7 +31,7 @@ ja:
       not_saved:
         one: "%{resource}の登録に失敗しました: 1件のエラーがあります。"
         other: "%{resource}の登録に失敗しました: %{count}件のエラーがあります。"
-      confirmation: "パスワードが一致しません"
+      confirmation: "が一致しません"
       not_found: "そのメールアドレスは登録されていません"
       accepted: を受諾してください
       blank: を入力してください

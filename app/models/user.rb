@@ -16,11 +16,11 @@ class User < ApplicationRecord
     params.delete(:password_confirmation) if params[:password_confirmation].blank?
     current_password = params.delete(:current_password)
 
-    if params[:current_password].present?
-      if valid_password?(params[:current_password])
+    if current_password.present?
+      if valid_password?(current_password)
         update(params, *options)
       else
-        errors.add(:current_password, :invalid)
+        errors.add(:current_password, "が誤っています")
         false
       end
     else
