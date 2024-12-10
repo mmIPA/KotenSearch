@@ -10,6 +10,11 @@ ja:
         password_confirmation: "パスワード（確認）"
         name: "おなまえ"
       post:
+        title: "タイトル"
+        description: "概要"
+        place: "場所"
+        image: "画像"
+        categories: "カテゴリ"
         end_date: "終了日"
         start_date: "開始日"
     errors:
