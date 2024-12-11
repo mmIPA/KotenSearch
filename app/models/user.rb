@@ -16,25 +16,26 @@ class User < ApplicationRecord
     params.delete(:password_confirmation) if params[:password_confirmation].blank?
     current_password = params.delete(:current_password)
 
-    if current_password.present?
-      if valid_password?(current_password)
-        update(params, *options)
-      else
-        errors.add(:current_password, "が誤っています")
-        false
+    if params[:password].present? || params[:password_confirmation].present?
+      # 現在のパスワードが未入力の場合エラー
+      if current_password.blank?
+        errors.add(:current_password, "を入力してください")
+        return false
       end
-    else
-      if params[:password].present? || params[:password_confirmation].present?
-        if params[:password] == params[:password_confirmation]
-          update(params, *options)
-        else
-          errors.add(:password_confirmation, "パスワード確認が一致しません")
-          false
-        end
-      else
-        update(params, *options)
+  
+      # 現在のパスワードが間違っている場合エラー
+      unless valid_password?(current_password)
+        errors.add(:current_password, "が誤っています")
+        return false
+      end
+  
+      # 新しいパスワードと確認用パスワードが一致しない場合エラー
+      unless params[:password] == params[:password_confirmation]
+        errors.add(:password_confirmation, "パスワード確認が一致しません")
+        return false
       end
     end
+    update(params)
   end
   
   GUEST_USER_EMAIL = "guest@example.com"
