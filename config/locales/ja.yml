@@ -31,7 +31,7 @@ ja:
         end_date_after_start_date: "終了日は開始日より後の日付を選択してください"
 
   errors:
-    format: "%{attribute}%{message}"
+    format: "%{attribute} %{message}"
     messages:
       not_saved:
         one: "%{resource}の登録に失敗しました: 1件のエラーがあります。"
