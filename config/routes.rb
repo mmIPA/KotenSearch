@@ -28,7 +28,7 @@ Rails.application.routes.draw do
    
   namespace :admin_panel do
     resources :users, only: [:index, :show, :destroy]
-    resources :posts, only: [:show]
+    resources :posts, only: [:show, :destroy]
     resources :categories, only: [:index, :new, :create, :destroy]
     resources :comments, only: [:index, :destroy] 
   end
