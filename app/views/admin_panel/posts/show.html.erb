@@ -1,0 +1,78 @@
+<div class="container mt-5">
+  <!-- メイン画像 -->
+  <div class="row">
+    <div class="col-12 text-center">
+      <img src="<%= @post.image.url %>" class="img-fluid" alt="<%= @post.title %>" style="max-height: 500px; object-fit: cover; border-radius: 10px;">
+    </div>
+  </div>
+
+  <!-- タイトル -->
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <h1 class="display-4"><%= @post.title %></h1>
+      <p class="lead text-muted"><%= @post.start_date.strftime('%Y年%m月%d日') %> 〜 <%= @post.end_date.strftime('%Y年%m月%d日') %></p>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col d-flex align-items-center">
+      <!-- カテゴリ -->
+      <div class="ml-3">
+        <% @post.categories.each do |category| %>
+          <span><%= link_to "##{category.name}", admin_panel_category_path(category) %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- 投稿詳細 -->
+  <div class="row mt-5">
+    <!-- 投稿説明 -->
+    <div class="col-md-7">
+      <p>概要:<%= simple_format(@post.description, sanitize: true) %></p>
+    </div>
+
+    <!-- 日時・場所 -->
+    <div class="col-md-5">
+      <div class="border rounded p-4 bg-light">
+        <p><strong>開催日:</strong> <%= @post.start_date.strftime('%Y年%m月%d日') %>(<%= I18n.t('date.abbr_day_names')[@post.start_date.wday] %>) 〜 <%= @post.end_date.strftime('%Y年%m月%d日') %>(<%= I18n.t('date.abbr_day_names')[@post.end_date.wday] %>)</p>
+        <p><strong>開催時間:</strong> <%= @post.start_time.strftime('%H:%M') %> 〜 <%= @post.end_time.strftime('%H:%M') %></p>
+        <p><strong>開催場所:</strong> <%= @post.place %></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- コメント一覧 -->
+  <div class="mt-4"><i class="fas fa-comments" style="color: #7fffbf;"></i> コメント一覧</div>
+  <% if @post.comments.any? %>
+    <% @post.comments.each do |comment| %>
+      <% if comment.user.present? %>
+        <div class="custom-comment d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="mb-1">
+              <strong><%= comment.user.name %></strong>
+              <small class="text-muted">（<%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>）</small>
+            </h6>
+            <p class="mb-0"><%= comment.content %></p>
+          </div>
+          <%= link_to "削除", admin_panel_comment_path(comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn custom-delete-btn btn-sm" %>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>まだコメントがありません。</p>
+  <% end %>
+
+  <!-- 戻るボタン -->
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <% if request.referer&.include?(admin_panel_comments_path) %>
+        <%= link_to 'コメント一覧に戻る', request.referer, class: 'btn btn-outline-primary btn-lg' %>
+      <% elsif request.referer&.include?(admin_panel_users_path) %>
+        <%= link_to '投稿一覧に戻る', request.referer, class: 'btn btn-outline-primary btn-lg' %>
+      <% else %>
+        <%= link_to '前のページに戻る', admin_panel_users_path, class: 'btn btn-outline-primary btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+</div>

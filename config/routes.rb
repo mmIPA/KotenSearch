@@ -23,11 +23,12 @@ Rails.application.routes.draw do
   end
   
   devise_for :admin, skip: [:registrations, :password], controllers: {
-    sessions: 'admin/sessions'
+    sessions: 'admin_panel/sessions'
   }
    
-  namespace :admin do
+  namespace :admin_panel do
     resources :users, only: [:index, :show, :destroy]
+    resources :posts, only: [:show]
     resources :categories, only: [:index, :new, :create, :destroy]
     resources :comments, only: [:index, :destroy] 
   end

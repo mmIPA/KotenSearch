@@ -2,7 +2,7 @@
   <h1>カテゴリ一覧</h1>
   
   <div class="row m-4">
-    <%= link_to '新しいカテゴリを作成', new_admin_category_path, class: "btn btn-primary" %>
+    <%= link_to '新しいカテゴリを作成', new_admin_panel_category_path, class: "btn btn-primary" %>
   </div>
   
   <table class="table">
@@ -17,7 +17,7 @@
         <tr>
           <td><%= category.name %></td>
           <td>
-            <%= link_to '削除', admin_category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+            <%= link_to '削除', admin_panel_category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>
