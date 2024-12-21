@@ -2,7 +2,7 @@
   
   <h1>カテゴリを作成する</h1>
 
-  <%= form_with model: @category, url: admin_categories_path, local: true do |f| %>
+  <%= form_with model: @category, url: admin_panel_categories_path, local: true do |f| %>
     <div class="form-group">
       <%= f.label :name, "カテゴリ名" %>
       <%= f.text_field :name, class: "form-control" %>
@@ -11,6 +11,6 @@
     <%= f.submit "作成する", class: "btn btn-primary" %>
   <% end %>
 
-  <%= link_to '戻る', admin_categories_path %>
+  <%= link_to '戻る', admin_panel_categories_path %>
 
 </div>

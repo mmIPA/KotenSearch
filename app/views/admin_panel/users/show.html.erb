@@ -8,7 +8,7 @@
   </div>
 
   <div class="row" style="padding: 10px;">
-    <%= link_to 'ユーザー削除', admin_user_path(@user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' }, class: 'btn btn-danger' %>
+    <%= link_to 'ユーザー削除', admin_panel_user_path(@user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' }, class: 'btn btn-danger' %>
   </div>
 
   <div class="row" style="padding: 10px;">
@@ -28,7 +28,7 @@
               <p class="card-text"><%= truncate(post.description, length: 100) %></p>
               <p><strong>場所:</strong> <%= post.place %></p>
               <p><strong>期間:</strong> <%= post.start_date %> 〜 <%= post.end_date %></p>
-              <%= link_to '詳細を確認', post_path(post), class: 'btn btn-primary' %>
+              <%= link_to '詳細を確認', admin_panel_post_path(post), class: 'btn btn-primary' %>
             </div>
           </div>
         </div>
