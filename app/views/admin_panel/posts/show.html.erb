@@ -62,6 +62,16 @@
   <% else %>
     <p>まだコメントがありません。</p>
   <% end %>
+  
+  <!-- 投稿削除ボタン -->
+  <div class="row mt-4">
+    <div class="col-12 text-center">
+      <%= link_to '投稿を削除', admin_panel_post_path(@post), 
+                  method: :delete, 
+                  data: { confirm: '本当にこの投稿を削除しますか？' }, 
+                  class: 'btn btn-danger' %>
+    </div>
+  </div>
 
   <!-- 戻るボタン -->
   <div class="row mt-5">
