@@ -21,7 +21,11 @@
 ​
 ## 設計書
 
-後ほど作成予定
+▼詳細設計
+https://docs.google.com/spreadsheets/d/1wAk7T8bmwcXvruN8kcgXcfMTyGmLPNN66RgDGzTtkhU/edit?usp=sharing
+
+▼UIフロー図
+https://drive.google.com/file/d/1xZ-47gNszgPh-JjlVZcDdrQp8LZPg3y0/view?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)
