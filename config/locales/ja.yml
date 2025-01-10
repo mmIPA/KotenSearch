@@ -80,6 +80,10 @@ ja:
       invalid: "メールアドレスまたはパスワードが正しくありません"
       unauthenticated: "ログインしてください。"
       already_authenticated: ""
+    passwords:
+      user:
+        send_instructions: "パスワード再設定用のメールを送信しました。"
+      send_instructions: "パスワード再設定用のメールを送信しました。"
 
   date:
     abbr_day_names:
