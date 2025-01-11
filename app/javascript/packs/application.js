@@ -19,11 +19,13 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('turbolinks:load', function () {
   const toggleButton = document.getElementById('navbar-toggle');
   const navbarRight = document.getElementById('navbar-right');
 
-  toggleButton.addEventListener('click', function () {
-    navbarRight.classList.toggle('active');
-  });
+  if (toggleButton && navbarRight) {
+    toggleButton.addEventListener('click', function () {
+      navbarRight.classList.toggle('active');
+    });
+  }
 });
