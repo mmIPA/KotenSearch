@@ -30,7 +30,7 @@ module AdminPanel
     protected
   
     def after_sign_in_path_for(resource)
-      admin_users_path
+      admin_panel_users_path
     end
   
     def after_sign_out_path_for(resource_or_scope)
