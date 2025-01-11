@@ -18,3 +18,12 @@ import "../../assets/stylesheets/homes.scss";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleButton = document.getElementById('navbar-toggle');
+  const navbarRight = document.getElementById('navbar-right');
+
+  toggleButton.addEventListener('click', function () {
+    navbarRight.classList.toggle('active');
+  });
+});
