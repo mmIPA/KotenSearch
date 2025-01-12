@@ -46,3 +46,31 @@ h1 {
 .col-lg-6 {
   padding: 15px;
 }
+
+.navbar-toggle {
+  display: none; /* デフォルトでは非表示 */
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ナビゲーションメニューのスタイル（768px以下の画面幅） */
+@media (max-width: 768px) {
+  .navbar-right {
+    display: none; /* デフォルトでは非表示 */
+    flex-direction: column;
+    background-color: #b7cfc4; /* 必要なら背景色を設定 */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-right.active {
+    display: block; /* メニューを表示 */
+  }
+
+  .navbar-toggle {
+    display: block; /* ハンバーガーメニューを表示 */
+  }
+}
