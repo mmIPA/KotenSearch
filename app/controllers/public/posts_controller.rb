@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @categories = Category.all
   end
   
   def search
@@ -32,6 +33,7 @@ class Public::PostsController < ApplicationController
     else
       @posts = Post.all
     end
+    @categories = Category.all
     render :index
   end
 

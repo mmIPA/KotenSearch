@@ -11,14 +11,13 @@ import "channels";
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"; 
+import '../../assets/stylesheets/application.scss';
 
-import "../stylesheets/homes.scss";
+import "../../assets/stylesheets/homes.scss";
 
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
-
 
 document.addEventListener('turbolinks:load', function () {
   const toggleButton = document.getElementById('navbar-toggle');
